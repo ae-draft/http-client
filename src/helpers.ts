@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-export const param = require('jquery-param');
 import { FetchResolvers } from './declares';
 import { AjaxException } from './exceptions/ajaxException';
 
@@ -20,11 +18,7 @@ export function resolveResponse(response: Response, resolver?: FetchResolvers): 
   }
 }
 
-export function buildParams(
-  defaultParams: RequestInit,
-  newParams: RequestInit | null,
-  ...additional: Array<RequestInit>
-) {
+export function buildParams(defaultParams: RequestInit, newParams: RequestInit | null, ...additional: RequestInit[]) {
   let adds;
 
   if (additional.length > 0) {
