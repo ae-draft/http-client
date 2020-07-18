@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./lib",
+    "newLine": "CRLF",
+		"allowJs": true,
+		"removeComments": true,
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"moduleResolution": "node",
+    "lib": [
+      "es2015",
+      "es2016",
+      "dom.iterable",
+      "dom"
+		]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
