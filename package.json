@@ -1,8 +1,9 @@
 {
   "name": "http-client",
   "version": "1.0.0",
-  "description": "\"# My Awesome Greeter\"",
-  "main": "index.js",
+  "description": "http-client via es fetch",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": ["lib/**/*"],
   "scripts": {
    "build": "tsc",
@@ -14,8 +15,8 @@
    "version": "npm run format && git add -A src",
    "postversion": "git push && git push --tags"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["fetch", "http-client"],
+  "author": "protoconstructor",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^14.0.23",
