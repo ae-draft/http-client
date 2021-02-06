@@ -63,8 +63,14 @@ const createInstance = (defaults: IDefaults) => {
   Defaults = defaults;
 
   return client;
-}
+};
 
 export const client = {
-  Get, Post, Put, Delete, Options, helpers, createInstance
+  Get,
+  Post,
+  Put,
+  Delete,
+  Options,
+  helpers,
+  createInstance,
 };
