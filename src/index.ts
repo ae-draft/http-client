@@ -1,7 +1,14 @@
 import { IHttpMethodParams } from './interfaces';
 import * as helpers from './helpers';
 
-export const fetchDefaultOptions: RequestInit = {
+interface IDefaults {
+  basePath: string;
+}
+export let defaults: IDefaults = {
+  basePath: null,
+};
+
+const fetchDefaultOptions: RequestInit = {
   method: 'post',
   mode: 'cors',
   redirect: 'follow',
@@ -19,6 +26,7 @@ type requestMethod = 'get' | 'post' | 'put' | 'delete' | 'options';
 
 async function FetchRequest(params: IHttpMethodParams, method: requestMethod): Promise<any> {
   params.options = helpers.buildParams(fetchDefaultOptions, params.options || null, { method });
+  params.url = helpers.buildUrl(defaults.basePath, params.url);
 
   try {
     const fetchResponse = await fetch(params.url, params.options);
