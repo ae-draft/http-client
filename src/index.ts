@@ -65,7 +65,7 @@ interface IClient {
   Put: (params: IHttpMethodParams) => Promise<Response>;
   Delete: (params: IHttpMethodParams) => Promise<Response>;
   Options: (params: IHttpMethodParams) => Promise<Response>;
-  helpers: any;
+  helpers: helpers.IHelpers;
   createInstance: (defaults: IDefaults) => IClient;
 }
 
@@ -83,4 +83,4 @@ const createInstance = (defaults: IDefaults): IClient => {
   };
 };
 
-export const client = createInstance(Defaults);
+export default createInstance(Defaults);
