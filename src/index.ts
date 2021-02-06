@@ -60,21 +60,27 @@ function Options(params: IHttpMethodParams): Promise<Response> {
 }
 
 interface IClient {
-  Get: (params: IHttpMethodParams) => Promise<Response>,
-  Post: (params: IHttpMethodParams) => Promise<Response>,
-  Put: (params: IHttpMethodParams) => Promise<Response>,
-  Delete: (params: IHttpMethodParams) => Promise<Response>,
-  Options: (params: IHttpMethodParams) => Promise<Response>,
-  helpers: any,
-  createInstance: (defaults: IDefaults) => IClient
-};
+  Get: (params: IHttpMethodParams) => Promise<Response>;
+  Post: (params: IHttpMethodParams) => Promise<Response>;
+  Put: (params: IHttpMethodParams) => Promise<Response>;
+  Delete: (params: IHttpMethodParams) => Promise<Response>;
+  Options: (params: IHttpMethodParams) => Promise<Response>;
+  helpers: any;
+  createInstance: (defaults: IDefaults) => IClient;
+}
 
 const createInstance = (defaults: IDefaults): IClient => {
   Defaults = defaults;
 
   return {
-    Get, Post, Put, Delete, Options, helpers, createInstance
+    Get,
+    Post,
+    Put,
+    Delete,
+    Options,
+    helpers,
+    createInstance,
   };
-}
+};
 
 export const client = createInstance(Defaults);

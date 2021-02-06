@@ -1,6 +1,6 @@
 {
   "name": "pctor-http-client",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "http-client via es fetch",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
