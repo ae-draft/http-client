@@ -59,18 +59,22 @@ function Options(params: IHttpMethodParams): Promise<Response> {
   return FetchRequest(params, 'options');
 }
 
-const createInstance = (defaults: IDefaults) => {
+interface IClient {
+  Get: (params: IHttpMethodParams) => Promise<Response>,
+  Post: (params: IHttpMethodParams) => Promise<Response>,
+  Put: (params: IHttpMethodParams) => Promise<Response>,
+  Delete: (params: IHttpMethodParams) => Promise<Response>,
+  Options: (params: IHttpMethodParams) => Promise<Response>,
+  helpers: any,
+  createInstance: (defaults: IDefaults) => IClient
+};
+
+const createInstance = (defaults: IDefaults): IClient => {
   Defaults = defaults;
 
-  return client;
-};
+  return {
+    Get, Post, Put, Delete, Options, helpers, createInstance
+  };
+}
 
-export const client = {
-  Get,
-  Post,
-  Put,
-  Delete,
-  Options,
-  helpers,
-  createInstance,
-};
+export const client = createInstance(Defaults);
