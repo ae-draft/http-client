@@ -4,7 +4,7 @@ import * as helpers from './helpers';
 interface IDefaults {
   basePath: string;
 }
-export let defaults: IDefaults = {
+export let Defaults: IDefaults = {
   basePath: null,
 };
 
@@ -20,13 +20,11 @@ const fetchDefaultOptions: RequestInit = {
   },
 };
 
-export { helpers };
-
 type requestMethod = 'get' | 'post' | 'put' | 'delete' | 'options';
 
 async function FetchRequest(params: IHttpMethodParams, method: requestMethod): Promise<any> {
   params.options = helpers.buildParams(fetchDefaultOptions, params.options || null, { method });
-  params.url = helpers.buildUrl(defaults.basePath, params.url);
+  params.url = helpers.buildUrl(Defaults.basePath, params.url);
 
   try {
     const fetchResponse = await fetch(params.url, params.options);
@@ -41,22 +39,32 @@ async function FetchRequest(params: IHttpMethodParams, method: requestMethod): P
   }
 }
 
-export function Get(params: IHttpMethodParams): Promise<Response> {
+function Get(params: IHttpMethodParams): Promise<Response> {
   return FetchRequest(params, 'get');
 }
 
-export function Post(params: IHttpMethodParams): Promise<Response> {
+function Post(params: IHttpMethodParams): Promise<Response> {
   return FetchRequest(params, 'post');
 }
 
-export function Put(params: IHttpMethodParams): Promise<Response> {
+function Put(params: IHttpMethodParams): Promise<Response> {
   return FetchRequest(params, 'put');
 }
 
-export function Delete(params: IHttpMethodParams): Promise<Response> {
+function Delete(params: IHttpMethodParams): Promise<Response> {
   return FetchRequest(params, 'delete');
 }
 
-export function Options(params: IHttpMethodParams): Promise<Response> {
+function Options(params: IHttpMethodParams): Promise<Response> {
   return FetchRequest(params, 'options');
 }
+
+const createInstance = (defaults: IDefaults) => {
+  Defaults = defaults;
+
+  return client;
+}
+
+export const client = {
+  Get, Post, Put, Delete, Options, helpers, createInstance
+};
